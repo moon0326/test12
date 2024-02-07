@@ -1,0 +1,18 @@
+{
+	"type": "object",
+	"properties": {
+		"type": {
+			"type": "string",
+			"enum": ["stored_state"]
+		},
+		"index": {
+			"type": "string"
+		},
+		"operation": {
+			"$ref": "#/definitions/operations"
+		},
+		"value": {
+			"type": ["string", "boolean"]
+		}
+	}
+}

@@ -1,0 +1,18 @@
+{
+	"type": "object",
+	"properties": {
+		"type": {
+			"type": "string",
+			"enum": ["plugin_version"]
+		},
+		"plugin": {
+			"type": "string"
+		},
+		"version": {
+			"type": "string"
+		},
+		"operator": {
+			"$ref": "#/definitions/operations"
+		}
+	}
+}

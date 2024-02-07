@@ -1,0 +1,17 @@
+{
+	"type": "object",
+	"properties": {
+		"type": {
+			"type": "string",
+			"enum": ["is_woo_express"]
+		},
+		"plan": {
+			"type": "string",
+			"enum": ["trial", "essential", "performance"]
+		},
+		"value": {
+			"type": "boolean",
+			"default": false
+		}
+	}
+}

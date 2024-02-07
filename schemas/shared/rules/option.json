@@ -1,0 +1,122 @@
+{
+	"type": "object",
+	"properties": {
+		"type": {
+			"type": "string",
+			"enum": ["option"]
+		},
+		"option_name": {
+			"type": "string"
+		},
+		"value": {
+			"type": ["string", "integer", "boolean", "array"]
+		},
+		"default": {
+			"type": ["string", "integer", "boolean", "array"]
+		},
+		"operation": {
+			"$ref": "#/definitions/operations"
+		},
+		"option_transformers": {
+			"type": "array",
+			"items": [
+				{
+					"type": "object",
+					"properties": {
+						"use": {
+							"type": "string",
+							"enum": ["array_column"]
+						},
+						"arguments": {
+							"type": "object",
+							"properties": {
+								"key": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				},
+				{
+					"type": "object",
+					"properties": {
+						"use": {
+							"type": "string",
+							"enum": ["array_flatten"]
+						}
+					}
+				},
+				{
+					"type": "object",
+					"properties": {
+						"use": {
+							"type": "string",
+							"enum": ["array_keys"]
+						}
+					}
+				},
+				{
+					"type": "object",
+					"properties": {
+						"use": {
+							"type": "string",
+							"enum": ["array_search"]
+						},
+						"arguments": {
+							"type": "object",
+							"properties": {
+								"value": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				},
+				{
+					"type": "object",
+					"properties": {
+						"use": {
+							"type": "string",
+							"enum": ["array_values"]
+						}
+					}
+				},
+				{
+					"type": "object",
+					"properties": {
+						"use": {
+							"type": "string",
+							"enum": ["dot_notation"]
+						},
+						"arguments": {
+							"type": "object",
+							"properties": {
+								"path": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				},
+				{
+					"type": "object",
+					"properties": {
+						"use": {
+							"type": "string",
+							"enum": ["count"]
+						}
+					}
+				},
+				{
+					"type": "object",
+					"properties": {
+						"use": {
+							"type": "string",
+							"enum": ["prepare_url"]
+						}
+					}
+				}
+			]
+		}
+	}
+}

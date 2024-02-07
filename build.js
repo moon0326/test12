@@ -1,0 +1,83 @@
+const JsonRefs = require('json-refs');
+const fs = require('fs');
+const yaml = require('js-yaml');
+const commander = require('commander');
+const version = require('./package.json').version;
+const path = require('path');
+
+var indexJsonValue;
+
+function bundle(indexJson) {
+    JsonRefs.clearCache();
+    const root = yaml.load(fs.readFileSync(indexJson, 'utf8'));
+    var options = {
+        filter: ['relative', 'remote'],
+        resolveCirculars: true,
+        location: indexJson,
+        loaderOptions: {
+            processContent: function(res, callback) {
+                callback(undefined, yaml.load(res.text));
+            }
+        }
+    }
+
+    function dictToString(dict) {
+        var res = [];
+        for (const [k, v] of Object.entries(dict)) {
+            res.push(`${k}: ${v}`);
+        }
+        return res.join('\n');
+    }
+
+    return JsonRefs.resolveRefs(root, options).then(function(results) {
+        var resErrors = {};
+        for (const [k, v] of Object.entries(results.refs)) {
+            if ('missing' in v && v.missing === true && (v.type == 'relative' || v.type === 'remote'))
+                resErrors[k] = v.error;
+        }
+
+        if (Object.keys(resErrors).length > 0) {
+            return Promise.reject(dictToString(resErrors));
+        }
+
+        return results.resolved;
+    }, function(e) {
+        var error = {};
+        Object.getOwnPropertyNames(e).forEach(function(key) {
+            error[key] = e[key];
+        });
+        return Promise.reject(dictToString(error));
+    });
+}
+
+function build(indexJson) {
+    bundle(indexJson).then(function(bundled) {
+        const bundleTo = "bundles/" + path.basename(indexJson);
+        var bundleString = JSON.stringify(bundled, null, 2);
+        fs.writeFile(bundleTo, bundleString, function(err) {
+            if (err) {
+                console.error(err);
+                return;
+            }
+            console.log('Saved bundle file in ' + bundleTo);
+        });
+    }).catch(function(e) {
+        console.error(e);
+    });
+}
+
+
+commander
+    .version(version)
+    .arguments('<indexJson>')
+    .action(function(indexJson, targetDir) {
+        indexJsonValue = indexJson;
+    })
+    .parse(process.argv);
+
+if (typeof indexJsonValue === 'undefined') {
+    console.error(`<indexJson> is required. See --help for more information.`);
+    process.exit(1);
+}
+
+build(indexJsonValue);
