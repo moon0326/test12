@@ -153,6 +153,10 @@
       "anyOf": [
         {
           "type": "object",
+          "required": [
+            "type",
+            "operands"
+          ],
           "properties": {
             "type": {
               "type": "string",
@@ -180,6 +184,10 @@
         },
         {
           "type": "object",
+          "required": [
+            "type",
+            "operand"
+          ],
           "properties": {
             "type": {
               "type": "string",
@@ -187,7 +195,7 @@
                 "not"
               ]
             },
-            "operands": {
+            "operand": {
               "type": "array",
               "items": {
                 "anyOf": [
@@ -207,6 +215,9 @@
         },
         {
           "type": "object",
+          "required": [
+            "type"
+          ],
           "properties": {
             "type": {
               "type": "string",
@@ -218,6 +229,10 @@
         },
         {
           "type": "object",
+          "required": [
+            "type",
+            "publish_after"
+          ],
           "properties": {
             "type": {
               "type": "string",
@@ -225,17 +240,17 @@
                 "publish_after_time"
               ]
             },
-            "operands": {
-              "type": "array",
-              "items": {
-                "type": "string",
-                "format": "date-time"
-              }
+            "publish_after": {
+              "type": "string"
             }
           }
         },
         {
           "type": "object",
+          "required": [
+            "type",
+            "publish_before"
+          ],
           "properties": {
             "type": {
               "type": "string",
@@ -243,17 +258,18 @@
                 "publish_before_time"
               ]
             },
-            "operands": {
-              "type": "array",
-              "items": {
-                "type": "string",
-                "format": "date-time"
-              }
+            "publish_before": {
+              "type": "string"
             }
           }
         },
         {
           "type": "object",
+          "required": [
+            "type",
+            "operation",
+            "value"
+          ],
           "properties": {
             "type": {
               "type": "string",
@@ -271,6 +287,11 @@
         },
         {
           "type": "object",
+          "required": [
+            "type",
+            "operation",
+            "value"
+          ],
           "properties": {
             "type": {
               "type": "string",
@@ -288,6 +309,10 @@
         },
         {
           "type": "object",
+          "required": [
+            "type",
+            "plugins"
+          ],
           "properties": {
             "type": {
               "type": "string",
@@ -305,6 +330,12 @@
         },
         {
           "type": "object",
+          "required": [
+            "type",
+            "plugin",
+            "version",
+            "operator"
+          ],
           "properties": {
             "type": {
               "type": "string",
@@ -325,6 +356,12 @@
         },
         {
           "type": "object",
+          "required": [
+            "type",
+            "index",
+            "operation",
+            "value"
+          ],
           "properties": {
             "type": {
               "type": "string",
@@ -348,6 +385,11 @@
         },
         {
           "type": "object",
+          "required": [
+            "type",
+            "operation",
+            "value"
+          ],
           "properties": {
             "type": {
               "type": "string",
@@ -365,6 +407,11 @@
         },
         {
           "type": "object",
+          "required": [
+            "type",
+            "operation",
+            "value"
+          ],
           "properties": {
             "type": {
               "type": "string",
@@ -382,6 +429,11 @@
         },
         {
           "type": "object",
+          "required": [
+            "type",
+            "operation",
+            "days"
+          ],
           "properties": {
             "type": {
               "type": "string",
@@ -399,6 +451,12 @@
         },
         {
           "type": "object",
+          "required": [
+            "type",
+            "index",
+            "operation",
+            "value"
+          ],
           "properties": {
             "type": {
               "type": "string",
@@ -419,6 +477,10 @@
         },
         {
           "type": "object",
+          "required": [
+            "type",
+            "plan"
+          ],
           "properties": {
             "type": {
               "type": "string",
@@ -442,6 +504,11 @@
         },
         {
           "type": "object",
+          "required": [
+            "type",
+            "note_name",
+            "operation"
+          ],
           "properties": {
             "type": {
               "type": "string",
@@ -458,7 +525,8 @@
                 "actioned",
                 "unactione",
                 "pending"
-              ]
+              ],
+              "default": "pending"
             },
             "operation": {
               "$ref": "#/definitions/operations"
@@ -470,6 +538,12 @@
         },
         {
           "type": "object",
+          "required": [
+            "type",
+            "timeframe",
+            "value",
+            "operation"
+          ],
           "properties": {
             "type": {
               "type": "string",
@@ -497,6 +571,12 @@
         },
         {
           "type": "object",
+          "required": [
+            "type",
+            "option_name",
+            "value",
+            "operation"
+          ],
           "properties": {
             "type": {
               "type": "string",
@@ -531,6 +611,9 @@
               "items": [
                 {
                   "type": "object",
+                  "required": [
+                    "use"
+                  ],
                   "properties": {
                     "use": {
                       "type": "string",
@@ -540,6 +623,9 @@
                     },
                     "arguments": {
                       "type": "object",
+                      "required": [
+                        "key"
+                      ],
                       "properties": {
                         "key": {
                           "type": "string"
@@ -550,6 +636,9 @@
                 },
                 {
                   "type": "object",
+                  "required": [
+                    "use"
+                  ],
                   "properties": {
                     "use": {
                       "type": "string",
@@ -561,6 +650,9 @@
                 },
                 {
                   "type": "object",
+                  "required": [
+                    "use"
+                  ],
                   "properties": {
                     "use": {
                       "type": "string",
@@ -572,6 +664,9 @@
                 },
                 {
                   "type": "object",
+                  "required": [
+                    "use"
+                  ],
                   "properties": {
                     "use": {
                       "type": "string",
@@ -581,6 +676,9 @@
                     },
                     "arguments": {
                       "type": "object",
+                      "required": [
+                        "value"
+                      ],
                       "properties": {
                         "value": {
                           "type": "string"
@@ -591,6 +689,9 @@
                 },
                 {
                   "type": "object",
+                  "required": [
+                    "use"
+                  ],
                   "properties": {
                     "use": {
                       "type": "string",
@@ -602,6 +703,9 @@
                 },
                 {
                   "type": "object",
+                  "required": [
+                    "use"
+                  ],
                   "properties": {
                     "use": {
                       "type": "string",
@@ -611,6 +715,9 @@
                     },
                     "arguments": {
                       "type": "object",
+                      "required": [
+                        "path"
+                      ],
                       "properties": {
                         "path": {
                           "type": "string"
@@ -621,6 +728,9 @@
                 },
                 {
                   "type": "object",
+                  "required": [
+                    "use"
+                  ],
                   "properties": {
                     "use": {
                       "type": "string",
@@ -632,6 +742,9 @@
                 },
                 {
                   "type": "object",
+                  "required": [
+                    "use"
+                  ],
                   "properties": {
                     "use": {
                       "type": "string",
@@ -647,6 +760,10 @@
         },
         {
           "type": "object",
+          "required": [
+            "type",
+            "value"
+          ],
           "properties": {
             "type": {
               "type": "string",

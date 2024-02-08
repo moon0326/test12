@@ -1,5 +1,6 @@
 {
 	"type": "object",
+	"required": ["type", "note_name", "operation"],
 	"properties": {
 		"type": {
 			"type": "string",
@@ -10,7 +11,8 @@
 		},
 		"status": {
 			"type": "string",
-			"enum": ["actioned", "unactione", "pending"]
+			"enum": ["actioned", "unactione", "pending"],
+			"default": "pending"
 		},
 		"operation": {
 			"$ref": "#/definitions/operations"

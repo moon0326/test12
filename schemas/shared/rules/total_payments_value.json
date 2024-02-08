@@ -1,5 +1,6 @@
 {
 	"type": "object",
+	"required": ["type", "timeframe", "value", "operation"],
 	"properties": {
 		"type": {
 			"type": "string",

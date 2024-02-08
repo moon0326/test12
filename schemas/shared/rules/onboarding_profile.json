@@ -1,5 +1,6 @@
 {
 	"type": "object",
+	"required": ["type", "index", "operation", "value"],
 	"properties": {
 		"type": {
 			"type": "string",

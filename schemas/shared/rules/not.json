@@ -1,11 +1,12 @@
 {
 	"type": "object",
+	"required": ["type", "operand"],
 	"properties": {
 		"type": {
 			"type": "string",
 			"enum": ["not"]
 		},
-		"operands": {
+		"operand": {
 			"type": "array",
 			"items": {
 				"anyOf": [
