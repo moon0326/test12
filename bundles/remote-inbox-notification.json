@@ -1,6 +1,7 @@
 {
   "title": "Remote Inbox Notification Schema",
   "type": "array",
+  "additionalItems": false,
   "items": {
     "type": "object",
     "required": [
@@ -773,6 +774,17 @@
             },
             "value": {
               "type": "boolean"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "pass"
+              ]
             }
           }
         }

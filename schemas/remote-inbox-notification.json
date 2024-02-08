@@ -1,6 +1,7 @@
 {
 	"title": "Remote Inbox Notification Schema",
 	"type": "array",
+	"additionalItems": false,
 	"items": {
 		"type": "object",
 		"required": ["slug", "status", "locales", "type", "rules"],
@@ -96,28 +97,6 @@
 	},
 	"definitions": {
 		"operations": {"$ref": "./shared/operations.json"},
-		"rules": {
-			"anyOf": [
-				{"$ref": "./shared/rules/or.json"},
-				{"$ref": "./shared/rules/not.json"},
-				{"$ref": "./shared/rules/fail.json"},
-				{"$ref": "./shared/rules/publish_after_time.json"},
-				{"$ref": "./shared/rules/publish_before_time.json"},
-				{"$ref": "./shared/rules/base_location_country.json"},
-				{"$ref": "./shared/rules/base_location_state.json"},
-				{"$ref": "./shared/rules/plugins_activated.json"},
-				{"$ref": "./shared/rules/plugin_version.json"},
-				{"$ref": "./shared/rules/stored_state.json"},
-				{"$ref": "./shared/rules/product_count.json"},
-				{"$ref": "./shared/rules/order_count.json"},
-				{"$ref": "./shared/rules/wcadmin_active_for.json"},
-				{"$ref": "./shared/rules/onboarding_profile.json"},
-				{"$ref": "./shared/rules/is_woo_express.json"},
-				{"$ref": "./shared/rules/note_status.json"},
-				{"$ref": "./shared/rules/total_payments_value.json"},
-				{"$ref": "./shared/rules/option.json"},
-				{"$ref": "./shared/rules/is_ecommerce.json"}
-			]
-		}
+		"rules": {"$ref": "./shared/rules.json"}
 	}
 }
